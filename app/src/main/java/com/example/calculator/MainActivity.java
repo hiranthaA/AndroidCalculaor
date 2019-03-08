@@ -179,10 +179,7 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString().isEmpty() || input1 == null){
-                    //TODO
-                }
-                else{
+                if(!txtDisplay.getText().toString().isEmpty() && input1 != null){
                     input2=Double.parseDouble(txtDisplay.getText().toString());
                     double answer;
                     switch(operation){
@@ -203,8 +200,6 @@ public class MainActivity extends AppCompatActivity {
                             displayOnPrimaryDisplay(answer);
                             break;
                         default:
-                            //TODO
-                            System.out.println("Invalid Operation");
                     }
                     txtSecDisplay.setText(null);
                     input1=null;
