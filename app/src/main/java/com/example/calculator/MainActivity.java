@@ -95,15 +95,14 @@ public class MainActivity extends AppCompatActivity {
                 if(input1==null){
                     if(!txtDisplay.getText().toString().isEmpty()){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
-                        System.out.println(input1);
                         operation = '+';
-                        txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                        displayOnSecondaryDisplay();
                         txtDisplay.setText("");
                     }
                 }
                 else{
                     operation='+';
-                    txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                    displayOnSecondaryDisplay();
                 }
 
             }
@@ -115,15 +114,14 @@ public class MainActivity extends AppCompatActivity {
                 if(input1==null){
                     if(!txtDisplay.getText().toString().isEmpty()){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
-                        System.out.println(input1);
                         operation = '-';
-                        txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                        displayOnSecondaryDisplay();
                         txtDisplay.setText("");
                     }
                 }
                 else{
                     operation='-';
-                    txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                    displayOnSecondaryDisplay();
                 }
 
             }
@@ -135,15 +133,14 @@ public class MainActivity extends AppCompatActivity {
                 if(input1==null){
                     if(!txtDisplay.getText().toString().isEmpty()){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
-                        System.out.println(input1);
                         operation = '÷';
-                        txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                        displayOnSecondaryDisplay();
                         txtDisplay.setText("");
                     }
                 }
                 else{
                     operation='÷';
-                    txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                    displayOnSecondaryDisplay();
                 }
 
             }
@@ -155,16 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 if(input1==null){
                     if(!txtDisplay.getText().toString().isEmpty()){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
-                        System.out.println(input1);
                         operation = '×';
-                        txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                        displayOnSecondaryDisplay();
                         txtDisplay.setText("");
                     }
 
                 }
                 else{
                     operation='×';
-                    txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+                    displayOnSecondaryDisplay();
                 }
 
             }
@@ -174,24 +170,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(txtDisplay.getText().toString().isEmpty() || input1 == null){
-
+                    //TODO
                 }
                 else{
                     input2=Double.parseDouble(txtDisplay.getText().toString());
+                    double answer;
                     switch(operation){
                         case '+' :
-                            txtDisplay.setText(Double.toString(input1+input2));
+                            answer = input1+input2;
+                            displayOnPrimaryDisplay(answer);
                             break;
                         case '-' :
-                            txtDisplay.setText(Double.toString(input1-input2));
+                            answer = input1-input2;
+                            displayOnPrimaryDisplay(answer);
                             break;
                         case '÷' :
-                            txtDisplay.setText(Double.toString(input1/input2));
+                            answer = input1/input2;
+                            displayOnPrimaryDisplay(answer);
                             break;
                         case '×' :
-                            txtDisplay.setText(Double.toString(input1*input2));
+                            answer = input1*input2;
+                            displayOnPrimaryDisplay(answer);
                             break;
                         default:
+                            //TODO
                             System.out.println("Invalid Operation");
                     }
                     txtSecDisplay.setText("");
@@ -321,6 +323,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void displayOnSecondaryDisplay(){
+        if(input1%1==0){
+            txtSecDisplay.setText(Integer.toString(input1.intValue()).concat(" ").concat(Character.toString(operation)));
+        }
+        else{
+            txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+        }
+    }
+
+    private void displayOnPrimaryDisplay(double answer){
+        if(answer % 1 ==0){
+            txtDisplay.setText(Integer.toString((int)answer));
+        }
+        else{
+            txtDisplay.setText(Double.toString(answer));
+        }
     }
 
     private void setupUI(){
