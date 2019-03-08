@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CODEFEST - Calculator</string>
+    <string name="btn1text">1</string>
+    <string name="btn2text">2</string>
+    <string name="btn3text">3</string>
+    <string name="btn4text">4</string>
+    <string name="btn5text">5</string>
+    <string name="btn6text">6</string>
+    <string name="btn7text">7</string>
+    <string name="btn8text">8</string>
+    <string name="btn9text">9</string>
+    <string name="btn0text">0</string>
+    <string name="btndottext">.</string>
+    <string name="btncleartext">C</string>
+    <string name="btndivtext">÷</string>
+    <string name="btnmultitext">×</string>
+    <string name="btnsubtext">-</string>
+    <string name="btnaddtext">+</string>
+    <string name="btncetext">CE</string>
+    <string name="btnequaltext">=</string>
+    <string name="btndeltext">Del</string>
+    <string name="txtdisplaytext"></string>
+
+
+</resources>
