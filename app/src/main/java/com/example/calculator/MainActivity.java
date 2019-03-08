@@ -2,12 +2,15 @@ package com.example.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    Toolbar toolbar;
 
     private Button btn0;
     private Button btn1;
@@ -41,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupUI();
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_dock_black_24dp);
+        setSupportActionBar(toolbar);
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
