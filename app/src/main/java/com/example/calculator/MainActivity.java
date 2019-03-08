@@ -3,7 +3,6 @@ package com.example.calculator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,52 +11,38 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    private Button btn0;
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
-    private Button btnClear;
-    private Button btnCE;
-    private Button btnDot;
-    private Button btnEqual;
-    private Button btnDel;
-    private Button btnMulti;
-    private Button btnDiv;
-    private Button btnSub;
-    private Button btnAdd;
-    private Button btnPlusMinus;
-    private TextView txtDisplay;
-    private TextView txtSecDisplay;
+    private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnClear,btnCE,btnDot,btnEqual,btnDel,btnMulti,btnDiv,btnSub,btnAdd,btnPlusMinus;
+    private TextView txtDisplay,txtSecDisplay;
 
-    private Double input1;
-    private Double input2;
+    private Double operand1;
+    private Double operand2;
     private char operation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //initialize UI components
         setupUI();
+        //adding a new toolbar instead of default actionbar
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_dock_black_24dp);
         setSupportActionBar(toolbar);
 
+        //ActionListner for Clear(C) button
+        //execute on click
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtDisplay.setText(null);
                 txtSecDisplay.setText(null);
-                input1=null;
-                input2=null;
+                operand1 =null;
+                operand2 =null;
             }
         });
 
+        //ActionListner for Clear Entry(CE) button
+        //execute on click
         btnCE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Delete(DEL) button
+        //execute on click
         btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Decimal(.) button
+        //execute on click
         btnDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Change Sign(+-) button
+        //execute on click
         btnPlusMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Add(+) button
+        //execute on click
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input1==null){
+                if(operand1 ==null){
                     if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
-                        input1=Double.parseDouble(txtDisplay.getText().toString());
+                        operand1 =Double.parseDouble(txtDisplay.getText().toString());
                         operation = '+';
                         displayOnSecondaryDisplay();
                         txtDisplay.setText("");
@@ -118,12 +111,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Subtract(-) button
+        //execute on click
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input1==null){
+                if(operand1 ==null){
                     if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
-                        input1=Double.parseDouble(txtDisplay.getText().toString());
+                        operand1 =Double.parseDouble(txtDisplay.getText().toString());
                         operation = '-';
                         displayOnSecondaryDisplay();
                         txtDisplay.setText(null);
@@ -137,12 +132,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Divition(÷) button
+        //execute on click
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input1==null){
+                if(operand1 ==null){
                     if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
-                        input1=Double.parseDouble(txtDisplay.getText().toString());
+                        operand1 =Double.parseDouble(txtDisplay.getText().toString());
                         operation = '÷';
                         displayOnSecondaryDisplay();
                         txtDisplay.setText(null);
@@ -156,12 +153,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Multiplication(×) button
+        //execute on click
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(input1==null){
+                if(operand1 ==null){
                     if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
-                        input1=Double.parseDouble(txtDisplay.getText().toString());
+                        operand1 =Double.parseDouble(txtDisplay.getText().toString());
                         operation = '×';
                         displayOnSecondaryDisplay();
                         txtDisplay.setText(null);
@@ -176,39 +175,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Equal(=) button
+        //execute on click
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!txtDisplay.getText().toString().isEmpty() && input1 != null){
-                    input2=Double.parseDouble(txtDisplay.getText().toString());
+                if(!txtDisplay.getText().toString().isEmpty() && operand1 != null){
+                    operand2 =Double.parseDouble(txtDisplay.getText().toString());
                     double answer;
                     switch(operation){
                         case '+' :
-                            answer = input1+input2;
+                            answer = operand1 + operand2;
                             displayOnPrimaryDisplay(answer);
                             break;
                         case '-' :
-                            answer = input1-input2;
+                            answer = operand1 - operand2;
                             displayOnPrimaryDisplay(answer);
                             break;
                         case '÷' :
-                            answer = input1/input2;
+                            answer = operand1 / operand2;
                             displayOnPrimaryDisplay(answer);
                             break;
                         case '×' :
-                            answer = input1*input2;
+                            answer = operand1 * operand2;
                             displayOnPrimaryDisplay(answer);
                             break;
                         default:
                     }
                     txtSecDisplay.setText(null);
-                    input1=null;
-                    input2=null;
+                    operand1 =null;
+                    operand2 =null;
                 }
 
             }
         });
 
+        //ActionListner for Zero(0) button
+        //execute on click
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,6 +224,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for One(1) button
+        //execute on click
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,6 +238,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Two(2) button
+        //execute on click
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -245,6 +252,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Three(3) button
+        //execute on click
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -257,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Four(4) button
+        //execute on click
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -269,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Five(5) button
+        //execute on click
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,6 +294,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Six(6) button
+        //execute on click
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -293,6 +308,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Seven(7) button
+        //execute on click
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,6 +322,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for eight(8) button
+        //execute on click
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -317,6 +336,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //ActionListner for Nine(9) button
+        //execute on click
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -330,21 +351,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
+    /*
+    This method will populate first operand for the operation and the operator
+    This method will drop decimal part if the value is a whole number
+     */
     private void displayOnSecondaryDisplay(){
-        if(input1%1==0){
-            txtSecDisplay.setText(Integer.toString(input1.intValue()).concat(" ").concat(Character.toString(operation)));
+        if(operand1 %1==0){
+            txtSecDisplay.setText(Integer.toString(operand1.intValue()).concat(" ").concat(Character.toString(operation)));
         }
         else{
-            txtSecDisplay.setText(Double.toString(input1).concat(" ").concat(Character.toString(operation)));
+            txtSecDisplay.setText(Double.toString(operand1).concat(" ").concat(Character.toString(operation)));
         }
     }
 
+    /*
+    This method will populate given values in the primary display
+    This method will drop decimal part if the value is a whole number
+     */
     private void displayOnPrimaryDisplay(double value){
         if(value % 1 ==0){
             txtDisplay.setText(Integer.toString((int)value));
@@ -354,6 +377,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    initialize variables with UI components
+     */
     private void setupUI(){
         btn0 = findViewById(R.id.btn0);
         btn1 = findViewById(R.id.btn1);
