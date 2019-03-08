@@ -2,6 +2,7 @@ package com.example.calculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupUI();
-        System.out.println("hirantha".concat(txtDisplay.getText().toString()));
 
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString().trim()=="0"){
+                if(txtDisplay.getText().toString()=="0"){
                     txtDisplay.setText("1");
                 }
                 else{
@@ -327,6 +327,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void displayOnSecondaryDisplay(){

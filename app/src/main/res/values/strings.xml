@@ -20,6 +20,7 @@
     <string name="btnequaltext">=</string>
     <string name="btndeltext">DEL</string>
     <string name="txtdisplaytext"></string>
+    <string name="mainactionbaricontext">CODEFEST</string>
 
 
 </resources>
