@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtDisplay.setText("");
-                txtSecDisplay.setText("");
+                txtDisplay.setText(null);
+                txtSecDisplay.setText(null);
                 input1=null;
                 input2=null;
             }
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnCE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtDisplay.setText("");
+                txtDisplay.setText(null);
             }
         });
 
@@ -65,13 +65,16 @@ public class MainActivity extends AppCompatActivity {
                 if(txtDisplay.getText().length()>0){
                     txtDisplay.setText(txtDisplay.getText().toString().substring(0,txtDisplay.getText().length()-1));
                 }
+                else if(txtDisplay.getText().length()==0){
+                    txtDisplay.setText(null);
+                }
             }
         });
 
         btnDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()==""){
+                if(txtDisplay.getText().toString().isEmpty()){
                     txtDisplay.setText(txtDisplay.getText().toString().concat("0."));
                 }
                 else if(txtDisplay.getText().toString().indexOf(".")<0){
@@ -83,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
         btnPlusMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="0"){
-                    txtDisplay.setText(Double.toString(Double.parseDouble(txtDisplay.getText().toString())*(-1)));
+                if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="0" && txtDisplay.getText().toString()!="."){
+                    //txtDisplay.setText(Double.toString(Double.parseDouble(txtDisplay.getText().toString())*(-1)));
+                    displayOnPrimaryDisplay(Double.parseDouble(txtDisplay.getText().toString())*(-1));
                 }
             }
         });
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input1==null){
-                    if(!txtDisplay.getText().toString().isEmpty()){
+                    if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
                         operation = '+';
                         displayOnSecondaryDisplay();
@@ -112,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input1==null){
-                    if(!txtDisplay.getText().toString().isEmpty()){
+                    if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
                         operation = '-';
                         displayOnSecondaryDisplay();
-                        txtDisplay.setText("");
+                        txtDisplay.setText(null);
                     }
                 }
                 else{
@@ -131,11 +135,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input1==null){
-                    if(!txtDisplay.getText().toString().isEmpty()){
+                    if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
                         operation = '÷';
                         displayOnSecondaryDisplay();
-                        txtDisplay.setText("");
+                        txtDisplay.setText(null);
                     }
                 }
                 else{
@@ -150,11 +154,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(input1==null){
-                    if(!txtDisplay.getText().toString().isEmpty()){
+                    if(!txtDisplay.getText().toString().isEmpty() && txtDisplay.getText().toString()!="."){
                         input1=Double.parseDouble(txtDisplay.getText().toString());
                         operation = '×';
                         displayOnSecondaryDisplay();
-                        txtDisplay.setText("");
+                        txtDisplay.setText(null);
                     }
 
                 }
@@ -196,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                             //TODO
                             System.out.println("Invalid Operation");
                     }
-                    txtSecDisplay.setText("");
+                    txtSecDisplay.setText(null);
                     input1=null;
                     input2=null;
                 }
@@ -219,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
+                if(txtDisplay.getText().toString().trim()=="0"){
                     txtDisplay.setText("1");
                 }
                 else{
@@ -334,12 +338,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void displayOnPrimaryDisplay(double answer){
-        if(answer % 1 ==0){
-            txtDisplay.setText(Integer.toString((int)answer));
+    private void displayOnPrimaryDisplay(double value){
+        if(value % 1 ==0){
+            txtDisplay.setText(Integer.toString((int)value));
         }
         else{
-            txtDisplay.setText(Double.toString(answer));
+            txtDisplay.setText(Double.toString(value));
         }
     }
 
