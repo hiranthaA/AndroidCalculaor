@@ -1,2 +1,2 @@
 # AndroidCalculaor
-Android Calculator which wis capable of doing simple arithmatic operations.
+Android Calculator which is capable of doing simple arithmatic operations.
