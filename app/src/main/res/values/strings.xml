@@ -18,7 +18,8 @@
     <string name="btnaddtext">+</string>
     <string name="btncetext">CE</string>
     <string name="btnequaltext">=</string>
-    <string name="btndeltext">DEL</string>
+    <string name="btndeltext">←</string>
+    <string name="btnplusminustext">±</string>
     <string name="txtdisplaytext"></string>
     <string name="mainactionbaricontext">CODEFEST</string>
 
