@@ -218,12 +218,7 @@ public class MainActivity extends AppCompatActivity {
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()!="0"){
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("0"));
-                }
-                else{
-                    txtDisplay.setText("0");
-                }
+                appendValueToDisplay("0");
             }
         });
 
@@ -232,12 +227,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("1");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("1"));
-                }
+                appendValueToDisplay("1");
             }
         });
 
@@ -246,12 +236,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("2");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("2"));
-                }
+                appendValueToDisplay("2");
             }
         });
 
@@ -260,12 +245,7 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("3");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("3"));
-                }
+                appendValueToDisplay("3");
             }
         });
 
@@ -274,12 +254,7 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("4");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("4"));
-                }
+                appendValueToDisplay("4");
             }
         });
 
@@ -288,12 +263,7 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("5");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("5"));
-                }
+                appendValueToDisplay("5");
             }
         });
 
@@ -302,12 +272,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("6");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("6"));
-                }
+                appendValueToDisplay("6");
             }
         });
 
@@ -316,12 +281,7 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("7");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("7"));
-                }
+                appendValueToDisplay("7");
             }
         });
 
@@ -330,12 +290,7 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("8");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("8"));
-                }
+                appendValueToDisplay("8");
             }
         });
 
@@ -344,14 +299,21 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtDisplay.getText().toString()=="0"){
-                    txtDisplay.setText("9");
-                }
-                else{
-                    txtDisplay.setText(txtDisplay.getText().toString().concat("9"));
-                }
+                appendValueToDisplay("9");
             }
         });
+    }
+
+    /*
+    this method will append the given value and disply it in primary display
+     */
+    private void appendValueToDisplay(String value){
+        if(txtDisplay.getText().toString()=="0"){
+            txtDisplay.setText(value);
+        }
+        else{
+            txtDisplay.setText(txtDisplay.getText().toString().concat(value));
+        }
     }
 
     /*
