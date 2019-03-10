@@ -3,14 +3,11 @@ package com.example.calculator;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    Toolbar toolbar;
 
     private Button btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnClear,btnCE,btnDot,btnEqual,btnDel,btnMulti,btnDiv,btnSub,btnAdd,btnPlusMinus;
     private TextView txtDisplay,txtSecDisplay;
@@ -23,12 +20,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //add Icon to action bar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.codefest);
         //initialize UI components
         setupUI();
-        //adding a new toolbar instead of default actionbar
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_dock_black_24dp);
-        setSupportActionBar(toolbar);
         //disable landscape mode
         setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
